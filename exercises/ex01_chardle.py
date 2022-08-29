@@ -3,12 +3,10 @@ __author__ = "730615836"
 
 word: str = input("Enter a 5-character word: ")
 if len(word) != 5:
-    print("Word must contain 5 characters")
-    exit()
+    exit("Word must contain 5 characters")
 letter: str = input("Enter a single character: ")
 if len(letter) != 1:
-    print("Character must be a single character")
-    exit()
+    exit("Character must be a single character")
 instance = int(0)
 print("Searching for " + letter + " in " + word + "")
 if letter == word[0]:
