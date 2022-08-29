@@ -27,5 +27,8 @@ if letter == word[4]:
     print(letter + " found at index 4")
     instance = instance + 1
 if instance == 1:
-    print(str(instance) + " instance of " + letter + " found in " + word)
-else: print(str(instance) + " instances of " + letter + " found in " + word)
+    print("1 instance of " + letter + " found in " + word)
+if instance == 0: 
+    print("No instances of " + letter + " found in " + word)
+if instance > 1: 
+    print(str(instance) + " instances of " + letter + " found in " + word)
