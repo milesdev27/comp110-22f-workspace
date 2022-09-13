@@ -1,8 +1,9 @@
 """Wordle!!!"""
 __author__ = "730615836"
 
-def contains_char(secret_word: str, guess: str) -> str:  # search the secret word for a specific character
-    """Generates a str value of either True or False"""
+
+def contains_char(secret_word: str, guess: str) -> bool:  # search the secret word for a specific character
+    """Generates a str value of either True or False."""
     assert len(guess) == 1
     found: bool = False
     a: int = 0
@@ -13,8 +14,9 @@ def contains_char(secret_word: str, guess: str) -> str:  # search the secret wor
             a += 1
     return found
 
+
 def emojified(guess: str, secret: str) -> str:  # print out a string of boxes corresponding with letters
-    """Generates a str of either green, yellow, or white boxes"""
+    """Generates a str of either green, yellow, or white boxes."""
     assert len(guess) == len(secret)
     WHITE_BOX: str = "\U00002B1C"
     GREEN_BOX: str = "\U0001F7E9"
@@ -32,12 +34,14 @@ def emojified(guess: str, secret: str) -> str:  # print out a string of boxes co
         a += 1
     return output
 
+
 def input_guess(expected_len: int) -> str:
-    """Generates an int value for the word length"""
+    """Generates an int value for the word length."""
     guess: str = input(f"Enter a {expected_len} character word: ")
     while len(guess) != expected_len:  # wrong number of characters in guess
         guess = input(f"That wasn't {expected_len} chars! Try again: ")
     return guess
+
 
 def main() -> None:  # part of program being run
     """The entrypoint of the program and main game loop."""
@@ -54,6 +58,7 @@ def main() -> None:  # part of program being run
             i += 1
     if i == 7 and guess != secret_word:  # didn't guess word
         print("X/6 - Sorry, try again tomorrow!")
+
 
 if __name__ == "__main__":
     main()
