@@ -11,5 +11,14 @@ MIN_Y: float = -MAX_Y
 VIEW_HEIGHT: int = BOUNDS_HEIGHT + 20
 
 CELL_RADIUS: int = 15
-CELL_COUNT: int = 1
-CELL_SPEED: float = 5.0
+CELL_COUNT: int = 10
+CELL_SPEED: float = 2.5
+
+VULNERABLE: int = 0
+INFECTED: int = 1
+IMMUNE: int = -1
+
+NUMBER_INFECTED: int = 6
+NUMBER_IMMUNE: int = 5
+
+RECOVERY_PERIOD: int = 90
