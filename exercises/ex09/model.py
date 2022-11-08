@@ -26,7 +26,7 @@ class Point:
         return Point(x, y)
 
     def distance(self, cells: Point) -> int:
-        """"""
+        """Calculates the distance between two cells."""
         x_value: int = (self.x - cells.x) ** 2
         y_value: int = (self.y - cells.y) ** 2
         return sqrt(x_value + y_value)
@@ -54,17 +54,13 @@ class Cell:
             self.sickness += 1
         if self.sickness == constants.RECOVERY_PERIOD:
             self.immunize()
-    
-    def color(self) -> str:
-        """Return the color representation of a cell."""
-        return "black"
 
     def contract_disease(self):
         """Assigns sickness to INFECTED."""
         self.sickness = constants.INFECTED
 
     def immunize(self):
-        """Assigns sickness to IMMUNE"""
+        """Assigns sickness to IMMUNE."""
         self.sickness = constants.IMMUNE
 
     def is_vulnerable(self):
@@ -98,13 +94,12 @@ class Cell:
             return "green"
 
     def contact_with(self, cell: Point) -> None:
-        """infects a vulnerable cell if it comes in contact with an infected cell."""
+        """Infects a vulnerable cell if it comes in contact with an infected cell."""
         if self.is_vulnerable() and cell.is_infected():
             self.contract_disease()
         if self.is_infected() and cell.is_vulnerable():
             cell.contract_disease()
     
-
 
 class Model:
     """The state of the simulation."""
@@ -120,18 +115,16 @@ class Model:
             start_direction: Point = self.random_direction(speed)
             cell: Cell = Cell(start_location, start_direction)
             self.population.append(cell)
-        if infected < 0:
+        if infected <= 0:
             raise ValueError("Number of infected cells is less than 0.")
-        if immune < 0:
+        if immune <= 0:
             raise ValueError("Number of immune cells is less than 0.")
-        if infected + immune > len(self.population):
+        if infected + immune >= len(self.population):
             raise ValueError("Number of infected and immune cells is greater than the total number of cells.")
         for i in range(infected):
             self.population[i].contract_disease()
         for j in range(immune):
             self.population[j].immunize()
-        
-
     
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
@@ -140,7 +133,6 @@ class Model:
             cell.tick()
             self.enforce_bounds(cell)
         self.check_contacts()
-
 
     def random_location(self) -> Point:
         """Generate a random location."""
