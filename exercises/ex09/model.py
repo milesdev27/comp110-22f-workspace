@@ -107,7 +107,7 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float, infected: int, immune: int):
+    def __init__(self, cells: int, speed: float, infected: int, immune: int = 0):
         """Initialize the cells with random locations and directions."""
         self.population = []
         for _ in range(cells):
@@ -117,7 +117,7 @@ class Model:
             self.population.append(cell)
         if infected <= 0:
             raise ValueError("Number of infected cells is less than 0.")
-        if immune <= 0:
+        if immune < 0:
             raise ValueError("Number of immune cells is less than 0.")
         if infected + immune >= len(self.population):
             raise ValueError("Number of infected and immune cells is greater than the total number of cells.")
